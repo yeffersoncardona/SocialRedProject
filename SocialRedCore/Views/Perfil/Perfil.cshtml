@@ -5,7 +5,7 @@
     @using Microsoft.AspNetCore.Http
     @inject IHttpContextAccessor HttpContextAccessor
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.title = "Echony: Perfil";
+    ViewBag.title = "Facebook: Perfil";
    
     if (this.HttpContextAccessor.HttpContext.Session.GetString("email") == null)
     {
@@ -73,22 +73,7 @@
                         <p>Menu de Navegación</p>
                     </div>
                     <div class="menu">
-                        <ul>
-                        
-                            <li>
-                                <a href="@Url.Action("Notificaciones", "Perfil")"> 
-                                <img src="~/images/fotos/IconosEchony/Notification_48px.png" /> Notificaciones 
-                                </a>
-                            </li>
-                         
-                            <li>
-
-                                <a href="@Url.Action("Amigos", "Perfil")">
-                                    <img src="~/images/fotos/IconosEchony/Add User Male_48px.png" />  Amigos
-                                </a>
-                            </li>
-                          
-                        </ul>
+                      
                     </div>
                 </div>
             </section>

@@ -71,7 +71,7 @@ namespace Service
                         Apellido = u.Apellido,
                         Email = u.Email,
                         Clave = u.Clave,
-                        Estado = "a",
+                        Estado = "d",
                         Codigo = new Correo().GetCodigo(8),
                         NickName = u.NickName,
                         ConfirmacionClave = u.ConfirmacionClave,

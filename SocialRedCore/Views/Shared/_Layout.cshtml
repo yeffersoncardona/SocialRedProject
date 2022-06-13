@@ -1,0 +1,118 @@
+﻿@model UsuarioViewModel
+@{ 
+    if(Model == null)
+    {
+        Url.Action("Login", "Index");
+    }
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <link href="~/css/estilos.css" rel="stylesheet" />
+    <link href="~/css/LoginStyle.css" rel="stylesheet" />
+    <link href="~/css/PerfilStyles.css" rel="stylesheet" />
+    <link href="~/css/musica.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+    <link href="~/css/jquery.loader.css" rel="stylesheet" />
+    <link href="~/lib/jquery-load-modal/jquery.loadingModal.min.css" rel="stylesheet" />
+    <title>@ViewBag.title</title>
+</head>
+<body>
+    @{
+        @using Microsoft.AspNetCore.Http
+        @inject IHttpContextAccessor HttpContextAccessor
+        if (this.HttpContextAccessor.HttpContext.Session.GetString("email") == null)
+        {
+
+
+            <header class="header_home">
+                <div class="logo_home">
+                    <div class="logo__container">
+                        <h1 class="logo"><a href="@Url.Action("Index", "Login")">Facebook</a></h1>
+                    </div>
+                    <div class="menu_home_container">
+                        <nav class="menu_home">
+                            <ul class="">
+                                <li>
+                                    <a href="@Url.Action("Registro", "Login")" class="botonSecundario">Registrarse</a>
+                                </li>
+                                <li>
+                                    <a id="buttonMusica" href="@Url.Action("Index", "Login")" class="botonSecundario">Inicar Sesion</a>
+
+                                </li>
+
+                            </ul>
+                        </nav>
+                    </div>
+
+                </div>
+
+            </header>
+        }
+        else
+        {
+
+            <header class="header_home">
+                <div class="logo_home">
+                    <div class="logo__container">
+                        <h1 class="logo"><a href="@Url.Action("Perfil", "Perfil")">ECHONY</a></h1>
+                    </div>
+                    <div class="menu_home_container">
+                        <form asp-controller="Perfil" asp-action="Busqueda" method="get">
+                            <input required class="input-busqueda" type="search" name="r" value="" placeholder="Busca a tus amigos..." />
+                            <input type="submit" name="buscar-btn" value="Buscar" />
+                        </form>
+                    </div>
+                    <div class="usuario">
+                        <div>
+
+                        </div>
+
+                        <div class="usuarioContenido">
+
+                            <h3 class="nombre_usuario"><a href="@Url.Action("Usuario", "Perfil", new Usuario {NickName = Model.UsuarioSesion.NickName, Id = Model.UsuarioSesion.Id })">@Model.UsuarioSesion.NickName</a></h3>
+                            <a class="btnSesion" href="@Url.Action("LogOut", "Login")">LogOut</a>
+                        </div>
+                        <div class="foto_usuario_container">
+
+                            <img id="nav-foto" src="~/images/Fotos_Usuarios/@Model.UsuarioSesion.Avatar" alt="" class="foto_usuario pic">
+
+                        </div>
+                        @*<nav class="nav__desplegable">
+                            <ul class="menu__desplegable">
+                                <li>Configuración</li>
+                                <li>Cerrar Sesión</li>
+                            </ul>
+                        </nav>*@
+                        <input type="checkbox" id="tuggle-menu"/>
+                        <label for="tuggle-menu" class="opcion">...</label>
+                    </div>
+                </div>
+
+            </header>
+
+
+        }
+    }
+
+    @RenderBody()
+    <footer>
+        <div class="page-footer"><p>Soy un footer @DateTime.Now.Year</p></div>
+    </footer>
+
+    <script src="~/js/jquery-1.10.2.js"></script>
+    <script src="~/js/jquery.form.min.js"></script>
+    <script src="~/js/SocialScript.js"></script>
+    <script src="~/js/MiScript.js"></script>
+    <script src="~/js/Login.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/js/jquery.loader.min.js"></script>
+
+    <script src="~/lib/jquery-load-modal/jquery.loadingModal.min.js"></script>
+    <script src="~/lib/signalr/signalr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+</body>
+</html>

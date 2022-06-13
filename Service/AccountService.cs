@@ -71,7 +71,7 @@ namespace Service
                         Apellido = u.Apellido,
                         Email = u.Email,
                         Clave = u.Clave,
-                        Estado = "d",
+                        Estado = "a",
                         Codigo = new Correo().GetCodigo(8),
                         NickName = u.NickName,
                         ConfirmacionClave = u.ConfirmacionClave,
@@ -80,7 +80,7 @@ namespace Service
 
                     cor.Destino = user.Email;
                     cor.Asunto = "Confirmacion de Correo";
-                    cor.Remitente = "Echony";
+                    cor.Remitente = "SocalRed";
                     string enlace = "http://localhost:51368/Login/EmailConfirm?code=" + user.Codigo;
                     cor.Mensaje = "Gracias por crear tu cuenta en Echony.\n Para completar el proceso de registro, haga click en el link debajo <br> <a href=" + enlace + ">Enlace de confirmacion</a>";
                     new Correo().PalomaMensajera(cor);

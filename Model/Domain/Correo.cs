@@ -23,9 +23,9 @@ namespace Model.Domain
             using (SmtpClient servicio = new SmtpClient("smtp-mail.outlook.com", 587))
             {
                 servicio.EnableSsl = true;
-                servicio.Credentials = new System.Net.NetworkCredential("echony@outlook.com", "hola1234");
+                servicio.Credentials = new System.Net.NetworkCredential("gokuf43@hotmail.com", "3422426yeyo");
 
-                MailMessage correo = new MailMessage("echony@outlook.com", cor.Destino, cor.Asunto, cor.Mensaje);
+                MailMessage correo = new MailMessage("gokuf43@hotmail.com", cor.Destino, cor.Asunto, cor.Mensaje);
 
                 correo.IsBodyHtml = true;
                 correo.BodyEncoding = System.Text.Encoding.UTF8;

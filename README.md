@@ -14,3 +14,9 @@
 * Comments
 * Profile picture
 
+# How To Run 
+* Create database SocialRedDb
+* Run update-database on Model project 
+
+
+Nota: si tiene problemas con el registro cambiar el estado del usuario de "d" lo cambias por "a" e ingresas al sistema
